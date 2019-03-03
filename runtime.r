@@ -13,9 +13,10 @@ function_name <- HANDLER_split[2]
 print(paste0("Sourcing '", file_name, "'"))
 source(file_name)
 print(paste0("Invoking function '", function_name, "'' with parameters:"))
-params <- fromJSON(EVENT_DATA)
+#params <- fromJSON(EVENT_DATA)
+params = EVENT_DATA
 print(params)
-result <- do.call(function_name, params)
+result <- do.call(function_name, list(params))
 print("Function returned:")
 print(result)
 url <- paste0("http://",
